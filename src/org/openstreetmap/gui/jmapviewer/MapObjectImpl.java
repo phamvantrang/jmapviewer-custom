@@ -14,6 +14,7 @@ public abstract class MapObjectImpl {
     private String name;
     private Style style;
     private Boolean visible;
+    private Color textColor = Color.DARK_GRAY;
 
     public MapObjectImpl(String name) {
         this(null, name, null);
@@ -124,9 +125,17 @@ public abstract class MapObjectImpl {
                 Font f = getDefaultFont();
                 setFont(new Font(f.getName(), Font.BOLD, f.getSize()));
             }
-            g.setColor(Color.DARK_GRAY);
+            g.setColor(getTextColor());
             g.setFont(getFont());
             g.drawString(name, position.x+MapMarkerDot.DOT_RADIUS+2, position.y+MapMarkerDot.DOT_RADIUS);
         }
     }
+
+	public Color getTextColor() {
+		return textColor;
+	}
+
+	public void setTextColor(Color textColor) {
+		this.textColor = textColor;
+	}
 }
